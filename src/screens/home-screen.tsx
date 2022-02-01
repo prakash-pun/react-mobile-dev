@@ -3,7 +3,7 @@ import InputForm from "../components/form";
 import Header from "../components/header";
 import TodoList from "../components/todo-list";
 
-export default function HomeScreen() {
+export function HomeScreen() {
   return (
     <View style={styles.container}>
       <Header />
@@ -22,7 +22,7 @@ export default function HomeScreen() {
             fontWeight: "bold"
           }}
         >
-          Add Todo
+          Add todo
         </Text>
       </TouchableOpacity>
     </View>
