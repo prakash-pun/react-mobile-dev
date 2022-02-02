@@ -1,5 +1,4 @@
-import { Text, View, StyleSheet, Image } from "react-native"
-// import { doge } from "../assets/doge.jpg";
+import { Text, View, StyleSheet, Image } from "react-native";
 
 export default function Header() {
   return (
@@ -7,7 +6,7 @@ export default function Header() {
       <Image source={require("../assets/doge.jpg")} style={styles.image} />
       <Text style={styles.appName}>Mero Todo</Text>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -29,4 +28,4 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold"
   }
-})
+});

@@ -1,4 +1,10 @@
-import { TouchableOpacity, View, StyleSheet, Text } from "react-native";
+import {
+  TouchableOpacity,
+  View,
+  StyleSheet,
+  Text,
+  Platform
+} from "react-native";
 import InputForm from "../components/form";
 import Header from "../components/header";
 import TodoList from "../components/todo-list";
@@ -22,7 +28,7 @@ export function HomeScreen() {
             fontWeight: "bold"
           }}
         >
-          Add todo
+          Add Todo
         </Text>
       </TouchableOpacity>
     </View>
@@ -32,7 +38,7 @@ export function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "rgb(26, 32, 44)",
-    paddingTop: "20%",
+    paddingTop: Platform.OS === "android" ? "10%" : "20%",
     height: "100%"
   },
   line: {

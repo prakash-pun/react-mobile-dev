@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { View, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet, Platform } from "react-native";
+import PropTypes from "prop-types";
 
 interface ILocation {
   placeholder: string;
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     height: 45,
     marginTop: 20,
-    width: 300,
+    width: Platform.OS === "android" ? "auto" : 300,
     backgroundColor: "#666",
     marginHorizontal: 40,
     paddingHorizontal: 10,
@@ -53,3 +54,12 @@ const styles = StyleSheet.create({
     fontSize: 15
   }
 });
+
+SearchInput.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  placeholder: PropTypes.string
+};
+
+SearchInput.defaultProps = {
+  placeholder: ""
+};

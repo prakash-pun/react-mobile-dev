@@ -36,7 +36,7 @@ export function WeatherScreen() {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
+    <KeyboardAvoidingView style={styles.container} behavior="height">
       <ImageBackground
         source={getImage(location.weather)}
         style={styles.imageContainer}
@@ -57,7 +57,7 @@ export function WeatherScreen() {
                     {location.weather}
                   </Text>
                   <Text style={[styles.textStyle, styles.largeText]}>
-                    {location.temperature}&deg;
+                    {Math.round(location.temperature)}&deg;
                   </Text>
                 </View>
               ) : (
