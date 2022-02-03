@@ -29,6 +29,10 @@
     "packagerOpts": {
       "sourceExts": ["ts", "tsx"],
       "transformer": "node-modules/react-native-typescript-transformer/index.js"
+    },
+    "androidStatusBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "#ffffff"
     }
   }
 }

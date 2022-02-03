@@ -21,3 +21,10 @@ export const getWeather = async (locationId: number) => {
   const temperature = data.max_temp;
   return { location, weather, temperature };
 };
+
+export const getContactList = async () => {
+  const response = await axiosInstance.get(
+    "https://randomuser.me/api/?results=15&inc=gender,name,location,email,phone,cell,picture,nat"
+  );
+  return response.data.results;
+};
