@@ -1,8 +1,13 @@
-import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
 
 export default function ContactDetailScreen() {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setCount(count => count + 1), 10000);
+    return () => clearInterval(id);
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.contactHeader}>
@@ -33,6 +38,8 @@ export default function ContactDetailScreen() {
           <View style={styles.contactText}>
             <Text style={{ fontWeight: "700" }}>Personal</Text>
             <Text>9834598734</Text>
+            <Text style={{ fontSize: 50 }}>{count}</Text>
+            <Button color="#1ACDA5" title="Hello" />
           </View>
         </View>
       </View>
@@ -84,3 +91,6 @@ const styles = StyleSheet.create({
     paddingLeft: 10
   }
 });
+
+// Wv21s3HXjeYrptJ3CH8VAWYh0Xi2;
+// XwYqswkMdMcK3CloUrbFygFZokB3;

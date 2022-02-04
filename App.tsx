@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Modal, Platform, StyleSheet, View } from "react-native";
 import Constants from "expo-constants";
-import { MessageScreen } from "./src/screens";
+import { MessageScreen, PhotoLibrary } from "./src/screens";
 import ContactScreen from "./src/screens/contact-screen";
 import ContactDetailScreen from "./src/screens/contact-detail-screen";
+import FlexScreen from "./src/screens/flex-screen";
 
 export default function App() {
-  return <ContactDetailScreen />;
+  return <PhotoLibrary />;
 }
 // export default function App() {
 //   const [commentModal, setCommentModal] = useState<any>({
