@@ -1,32 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, FlatList, StyleSheet } from "react-native";
 import Checkbox from "expo-checkbox";
 
-export default function TodoList() {
-  const [isChecked, setChecked] = useState(false);
-  const todos = [
-    {
-      id: "1",
-      todo: "Create React Native App",
-      isCompleted: false
-    },
-    {
-      id: "2",
-      todo: "Read all the React native docs",
-      isCompleted: false
-    },
-    {
-      id: "3",
-      todo: "Implement examples in your app",
-      isCompleted: false
-    },
-    {
-      id: "4",
-      todo: "keep working",
-      isCompleted: false
-    }
-  ];
-
+export default function TodoList({ todos, handleStatus }: any) {
+  const keyExtractor = (item: any) => item.id;
+  const onChange = (id: string) => {
+    handleStatus(id);
+  };
   return (
     <View style={styles.container}>
       <FlatList
@@ -34,14 +14,22 @@ export default function TodoList() {
         renderItem={({ item }) => (
           <View style={styles.todoItem}>
             <Checkbox
-              value={isChecked}
-              onValueChange={setChecked}
-              color={isChecked ? "#4630EB" : undefined}
+              color="#4630EB"
               style={styles.status}
+              value={item.isCompleted}
+              onValueChange={() => onChange(item.id)}
             />
-            <Text style={styles.todo}>{item.todo}</Text>
+            <Text
+              style={[
+                styles.todo,
+                item.isCompleted && { textDecorationLine: "line-through" }
+              ]}
+            >
+              {item.todo}
+            </Text>
           </View>
         )}
+        keyExtractor={keyExtractor}
       />
     </View>
   );

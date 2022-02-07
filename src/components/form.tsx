@@ -1,12 +1,30 @@
+import { useState } from "react";
 import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 
-export default function InputForm() {
+export default function InputForm({ todos, onSubmit }: any) {
+  const [text, setText] = useState<string>("");
+
+  const handleChangeText = (todo: string): void => {
+    setText(todo);
+  };
+
+  const handleSubmitEditing = (): void => {
+    if (!text) return;
+
+    onSubmit(text);
+    setText("");
+  };
   return (
     <SafeAreaView style={styles.formContainer}>
       <TextInput
         placeholderTextColor={"white"}
         placeholder="Add your todo"
         style={styles.form}
+        value={text}
+        underlineColorAndroid="transparent"
+        clearButtonMode="always"
+        onChangeText={handleChangeText}
+        onSubmitEditing={handleSubmitEditing}
       />
     </SafeAreaView>
   );

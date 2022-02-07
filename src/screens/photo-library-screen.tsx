@@ -4,12 +4,15 @@ import {
   StyleSheet,
   Text,
   View,
-  Platform
+  Platform,
+  TouchableHighlight,
+  TouchableOpacity
 } from "react-native";
 import Constants from "expo-constants";
 import { getList } from "../api";
 import { actionCreators, initialState, reducer } from "../reducers";
 import { PhotoGrid } from "../components";
+import { Props } from "../../App";
 
 export function PhotoLibrary() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -21,6 +24,7 @@ export function PhotoLibrary() {
 
     try {
       const nextPhotos = await getList(nextPage);
+
       dispatch(actionCreators.success(nextPhotos, nextPage));
     } catch (e) {
       dispatch(actionCreators.failure());
@@ -31,7 +35,6 @@ export function PhotoLibrary() {
     fetchPhotos();
   }, []);
 
-  // We'll show an error only if the first page fails to load
   if (photos.length === 0) {
     if (loading) {
       return (
@@ -65,10 +68,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
-    marginTop:
-      Platform.OS === "ios" && platformVersion > 11
-        ? Constants.statusBarHeight
-        : 0
+    justifyContent: "center"
+    // marginTop:
+    //   Platform.OS === "ios" && platformVersion > 11
+    //     ? Constants.statusBarHeight
+    //     : 0
   }
 });

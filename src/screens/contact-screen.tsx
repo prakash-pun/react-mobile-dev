@@ -4,7 +4,8 @@ import {
   Text,
   View,
   FlatList,
-  ActivityIndicator
+  ActivityIndicator,
+  Button
 } from "react-native";
 import Constants from "expo-constants";
 import ContactList from "../components/contact-list";
@@ -12,7 +13,7 @@ import { getContactList } from "../services";
 
 const keyExtractor = ({ phone }: any) => phone;
 
-export default function ContactScreen() {
+export default function ContactScreen({ navigation }: any) {
   const [contacts, setContacts] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -39,6 +40,10 @@ export default function ContactScreen() {
 
   return (
     <View style={styles.container}>
+      <Button
+        title="Detail"
+        onPress={() => navigation.navigate("Contact Detail")}
+      />
       {loading && <ActivityIndicator size={"large"} />}
       {error && <Text>Error...</Text>}
       {!loading && !error && (
@@ -54,7 +59,6 @@ export default function ContactScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: Constants.statusBarHeight,
     backgroundColor: "white",
     justifyContent: "center",
     flex: 1,

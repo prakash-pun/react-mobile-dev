@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.2)",
     paddingHorizontal: 20
   },
-
   imageContainer: {
     flex: 1
   },

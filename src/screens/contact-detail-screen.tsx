@@ -49,7 +49,7 @@ export default function ContactDetailScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: Constants.statusBarHeight
+    // marginTop: Constants.statusBarHeight
   },
   contactHeader: {
     display: "flex",

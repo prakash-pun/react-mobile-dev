@@ -17,15 +17,15 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 40,
+    height: 40,
     borderRadius: 50,
     marginRight: 10,
     marginLeft: 20
   },
   appName: {
     color: "white",
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: "bold"
   }
 });
