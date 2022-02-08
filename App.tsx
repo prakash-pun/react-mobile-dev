@@ -86,11 +86,10 @@ const ProfileNav = () => {
 
 export default function App() {
   const { isAuthenticated } = useContext(AuthContext);
-  console.log("1", isAuthenticated);
   return (
     <AuthProvider>
       <NavigationContainer>
-        {isAuthenticated ? (
+        {!isAuthenticated ? (
           <Tab.Navigator
             screenOptions={({ route }) => ({
               tabBarIcon: ({ focused, color, size }) => {
@@ -254,3 +253,7 @@ export default function App() {
 //         : 0
 //   }
 // });
+
+// {
+//   font-family: canada-type-gibson,helvetica neue,Helvetica,Arial,sans-serif;
+// }

@@ -1,1 +1,1 @@
-
+export const TEXT = "text";
