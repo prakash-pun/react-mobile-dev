@@ -20,7 +20,8 @@ import {
   MessageScreen,
   PhotoLibrary,
   HomeScreen,
-  WeatherScreen
+  WeatherScreen,
+  Map
 } from "./src/screens";
 import ContactScreen from "./src/screens/contact-screen";
 import ContactDetailScreen from "./src/screens/contact-detail-screen";
@@ -80,6 +81,7 @@ const ProfileNav = () => {
         }}
       />
       <Stack.Screen name="Weather" component={WeatherScreen} />
+      <Stack.Screen name="Map" component={Map} />
     </Stack.Navigator>
   );
 };

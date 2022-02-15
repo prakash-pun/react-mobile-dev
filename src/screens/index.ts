@@ -5,3 +5,4 @@ export * from "./comment-screen";
 export * from "./message-screen";
 export * from "./contact-screen";
 export * from "./photo-library-screen";
+export * from "./map-screen";
