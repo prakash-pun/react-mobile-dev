@@ -28,3 +28,5 @@ export const getContactList = async () => {
   );
   return response.data.results;
 };
+
+export * from "./todo.service";

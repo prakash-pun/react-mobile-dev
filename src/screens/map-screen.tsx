@@ -14,9 +14,11 @@ import {
 import MapView, { Marker, Callout, Circle, Geojson } from "react-native-maps";
 import * as Location from "expo-location";
 import * as IntentLauncher from "expo-intent-launcher";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import Constants from "expo-constants";
 import Modal from "react-native-modal";
 import { coordinates, secondCoordinates } from "../utils/point";
+import { getRoutes } from "../services";
 
 const myPlace: any = {
   type: "FeatureCollection",
@@ -60,6 +62,10 @@ const Map = () => {
     longitude: 83.9819055
   });
   const [location, setLocation] = useState<any>(null);
+  const [region, setRegion] = useState<any>({
+    latitude: 28.2329188,
+    longitude: 83.9819055
+  });
   const [errorMsg, setErrorMsg] = useState<any>(null);
   const [isModalVisible, setIsModalVisible] = useState<any>(false);
   const [appState, setAppState] = useState(AppState.currentState);
@@ -68,6 +74,7 @@ const Map = () => {
     { latitude: 28.2329188, longitude: 83.9819055 },
     { latitude: 28.213356890291745, longitude: 83.97138118743898 }
   ];
+  console.log("11", process.env.REACT_GOOGLE_MAPS_APIKEY);
 
   const GOOGLE_MAPS_APIKEY = "google-maps-apikey";
 
@@ -139,9 +146,56 @@ const Map = () => {
   } else if (location) {
     text = JSON.stringify(location);
   }
+
+  const [routes, setRoutes] = useState<any>();
+  const colors = ["green", "red"];
+
+  useEffect(() => {
+    if (!routes) {
+      const routeData = async () => {
+        const routes = await getRoutes();
+        const routeData = routes.docs.map((doc: any) => ({
+          // console.log(doc.data().coordinates);
+          ...doc.data(),
+          id: doc.id
+          // return JSON.parse(doc.data().coordinates);
+        }));
+        setRoutes(routeData);
+      };
+      routeData();
+    }
+  }, [routes]);
   return (
     <SafeAreaView>
       <Text>{text}</Text>
+      <GooglePlacesAutocomplete
+        placeholder="Search"
+        fetchDetails={true}
+        GooglePlacesSearchQuery={{
+          rankby: "distance"
+        }}
+        onPress={(data, details = null) => {
+          // 'details' is provided when fetchDetails = true
+          console.log(data, details);
+        }}
+        query={{
+          key: "",
+          language: "en",
+          components: "country:np",
+          type: "establishment",
+          radius: 30000,
+          location: `${region.latitude}, ${region.longitude}`
+        }}
+        styles={{
+          container: {
+            flex: 0,
+            position: "absolute",
+            width: "100%",
+            zIndex: 1
+          },
+          listView: { backgroundColor: "white" }
+        }}
+      />
       <Modal
         isVisible={isModalVisible}
         onModalHide={_openSetting ? openSetting : undefined}
@@ -192,7 +246,7 @@ const Map = () => {
             <Text>I am here</Text>
           </Callout>
         </Marker>
-        <Geojson
+        {/* <Geojson
           geojson={myPlace}
           strokeColor="#3265b8"
           fillColor="green"
@@ -203,7 +257,30 @@ const Map = () => {
           strokeColor="red"
           fillColor="green"
           strokeWidth={4}
-        />
+        /> */}
+        {routes && routes.length
+          ? routes.map((data: any, index: number) => (
+              <Geojson
+                key={index}
+                geojson={{
+                  type: "FeatureCollection",
+                  features: [
+                    {
+                      type: "Feature",
+                      properties: {},
+                      geometry: {
+                        type: "LineString",
+                        coordinates: JSON.parse(data.coordinates)
+                      }
+                    }
+                  ]
+                }}
+                strokeColor={colors[index]}
+                fillColor="green"
+                strokeWidth={4}
+              />
+            ))
+          : null}
       </MapView>
     </SafeAreaView>
   );
