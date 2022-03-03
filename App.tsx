@@ -6,7 +6,8 @@ import {
   View,
   Image,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import Constants from "expo-constants";
@@ -90,6 +91,7 @@ export default function App() {
   const { isAuthenticated } = useContext(AuthContext);
   return (
     <AuthProvider>
+      <StatusBar barStyle={"dark-content"} />
       <NavigationContainer>
         {!isAuthenticated ? (
           <Tab.Navigator
