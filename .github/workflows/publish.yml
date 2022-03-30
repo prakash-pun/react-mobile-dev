@@ -22,7 +22,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
-        run: yarn
+        run: yarn install
 
       - name: 🚀 Publish app
-        run: run: expo publish --non-interactive
+        run: expo publish --non-interactive
