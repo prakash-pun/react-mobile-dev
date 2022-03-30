@@ -27,6 +27,7 @@
     "expo-intent-launcher": "^10.1.2",
     "expo-location": "^14.0.2",
     "expo-status-bar": "~1.2.0",
+    "expo-updates": "^0.11.6",
     "firebase": "^9.6.7",
     "moti": "^0.17.1",
     "native-base": "^3.3.4",
