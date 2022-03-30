@@ -26,6 +26,14 @@ export function ProfileScreen({ navigation }: any) {
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Button title="Weather" onPress={() => navigation.navigate("Weather")} />
       <Button title="Map" onPress={() => navigation.navigate("Map")} />
+      <Button
+        title="Bottom Sheet"
+        onPress={() => navigation.navigate("Bottom")}
+      />
+      <Button
+        title="Bottom Modal"
+        onPress={() => navigation.navigate("Bottom-Modal")}
+      />
       <Text>Profile Screen</Text>
       {routes && routes.length
         ? routes.map((data: any, index: number) => (

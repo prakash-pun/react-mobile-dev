@@ -246,7 +246,7 @@ const Map = () => {
             <Text>I am here</Text>
           </Callout>
         </Marker>
-        {/* <Geojson
+        <Geojson
           geojson={myPlace}
           strokeColor="#3265b8"
           fillColor="green"
@@ -257,7 +257,10 @@ const Map = () => {
           strokeColor="red"
           fillColor="green"
           strokeWidth={4}
-        /> */}
+          onPress={(data: any) => {
+            console.log(data);
+          }}
+        />
         {routes && routes.length
           ? routes.map((data: any, index: number) => (
               <Geojson
