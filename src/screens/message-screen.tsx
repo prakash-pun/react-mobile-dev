@@ -46,7 +46,6 @@ export function MessageScreen() {
   const handlePressToolbarCamera = () => {};
   const handlePressToolbarLocation = () => {
     navigator.geolocation.getCurrentPosition(position => {
-      console.log(position);
       const {
         coords: { latitude, longitude }
       } = position;
@@ -55,7 +54,6 @@ export function MessageScreen() {
       //   ...message
       // });
     });
-    console.log("clicked");
   };
 
   const handleChangeFocus = (isFocused: boolean) => {

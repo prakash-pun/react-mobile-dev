@@ -74,7 +74,6 @@ const Map = () => {
     { latitude: 28.2329188, longitude: 83.9819055 },
     { latitude: 28.213356890291745, longitude: 83.97138118743898 }
   ];
-  console.log("11", process.env.REACT_GOOGLE_MAPS_APIKEY);
 
   const GOOGLE_MAPS_APIKEY = "google-maps-apikey";
 
@@ -257,9 +256,6 @@ const Map = () => {
           strokeColor="red"
           fillColor="green"
           strokeWidth={4}
-          onPress={(data: any) => {
-            console.log(data);
-          }}
         />
         {routes && routes.length
           ? routes.map((data: any, index: number) => (

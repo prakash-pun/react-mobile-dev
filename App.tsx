@@ -7,7 +7,13 @@ import {
   NativeStackScreenProps
 } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { PhotoLibrary, HomeScreen, WeatherScreen, Map } from "./src/screens";
+import {
+  PhotoLibrary,
+  HomeScreen,
+  WeatherScreen,
+  Map,
+  CalendarScreen
+} from "./src/screens";
 import ContactScreen from "./src/screens/contact-screen";
 import ContactDetailScreen from "./src/screens/contact-detail-screen";
 import FlexScreen from "./src/screens/flex-screen";
@@ -72,6 +78,7 @@ const ProfileNav = () => {
       <Stack.Screen name="Map" component={Map} />
       <Stack.Screen name="Bottom" component={NavigatorExample} />
       <Stack.Screen name="Bottom-Modal" component={CustomScreen} />
+      <Stack.Screen name="Calendar" component={CalendarScreen} />
     </Stack.Navigator>
   );
 };

@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Button } from "react-native";
-import { getRoutes } from "../services";
+// import { getRoutes } from "../services";
 
 export function ProfileScreen({ navigation }: any) {
-  const [routes, setRoutes] = useState<any>();
+  // const [routes, setRoutes] = useState<any>();
   const colors = ["green", "red"];
 
-  useEffect(() => {
-    if (!routes) {
-      const routeData = async () => {
-        const routes = await getRoutes();
-        const routeData = routes.docs.map((doc: any) => ({
-          // console.log(doc.data().coordinates);
-          ...doc.data(),
-          id: doc.id
-          // return JSON.parse(doc.data().coordinates);
-        }));
-        setRoutes(routeData);
-      };
-      routeData();
-    }
-  }, [routes]);
+  // useEffect(() => {
+  //   if (!routes) {
+  //     const routeData = async () => {
+  //       const routes = await getRoutes();
+  //       const routeData = routes.docs.map((doc: any) => ({
+  //         // console.log(doc.data().coordinates);
+  //         ...doc.data(),
+  //         id: doc.id
+  //         // return JSON.parse(doc.data().coordinates);
+  //       }));
+  //       setRoutes(routeData);
+  //     };
+  //     routeData();
+  //   }
+  // }, [routes]);
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -34,14 +34,18 @@ export function ProfileScreen({ navigation }: any) {
         title="Bottom Modal"
         onPress={() => navigation.navigate("Bottom-Modal")}
       />
+      <Button
+        title="Calendar"
+        onPress={() => navigation.navigate("Calendar")}
+      />
       <Text>Profile Screen</Text>
-      {routes && routes.length
+      {/* {routes && routes.length
         ? routes.map((data: any, index: number) => (
             <View key={index}>
               <Text>{data.startPoint}</Text>
             </View>
           ))
-        : null}
+        : null} */}
     </View>
   );
 }

@@ -8,7 +8,6 @@ const axiosInstance = axios.create({
 
 export const getTodos = async () => {
   const response = await axiosInstance.get("/todos");
-  console.log(response);
   return response;
 };
 

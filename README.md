@@ -4,6 +4,6 @@
 
 ## Steps to run the app
 
-- yarn `to install dependencies`
-- yarn start `to run the app`
-- `expo r -c` if problem with reanimated 2
+- `yarn` _to install dependencies_
+- `yarn start` _to run the app_
+- `expo r -c` _if problem with reanimated 2_
