@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import moment from "moment";
 import { Calendar, DateData } from "react-native-calendars";
+import moment from "moment";
+import * as Haptics from "expo-haptics";
 import { getDateRange } from "../utils";
 
 export const CalendarPicker = () => {
@@ -27,6 +28,7 @@ export const CalendarPicker = () => {
         setEndDate("");
       }
     }
+    Haptics.selectionAsync();
   };
 
   useEffect(() => {
@@ -62,9 +64,9 @@ export const CalendarPicker = () => {
           disabledArrowColor: "#d9e1e8",
           monthTextColor: "blue",
           indicatorColor: "blue",
-          textDayFontWeight: "300",
+          textDayFontWeight: "400",
           textMonthFontWeight: "bold",
-          textDayHeaderFontWeight: "300",
+          textDayHeaderFontWeight: "400",
           textDayFontSize: 16,
           textMonthFontSize: 16,
           textDayHeaderFontSize: 16

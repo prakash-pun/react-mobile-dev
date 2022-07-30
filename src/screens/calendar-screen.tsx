@@ -1,10 +1,9 @@
-import { useEffect, useState, useRef, useMemo, useCallback } from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { useState, useRef, useMemo, useCallback } from "react";
+import { StyleSheet, View, TextInput, Button } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
-import moment from "moment";
-import { DateData } from "react-native-calendars";
-import { data, getDateRange } from "../utils";
+import * as Haptics from "expo-haptics";
+import BottomSheet from "@gorhom/bottom-sheet";
+import { data } from "../utils";
 import { CalendarPicker } from "../components";
 
 export const CalendarScreen = () => {
@@ -26,7 +25,6 @@ export const CalendarScreen = () => {
 
   return (
     <View style={styles.container}>
-      <TextInput />
       <DropDownPicker
         open={open}
         value={value}
@@ -60,5 +58,12 @@ export const CalendarScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    alignItems: "stretch",
+    marginTop: 10,
+    marginBottom: 30,
+    justifyContent: "space-between"
   }
 });
