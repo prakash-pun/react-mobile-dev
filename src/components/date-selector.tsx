@@ -43,7 +43,7 @@ export const CalendarPicker = () => {
       </Text>
       <Calendar
         markingType={"period"}
-        initialDate={"2022-08-27"}
+        initialDate={moment().format("YYYY-MM-DD").toString()}
         minDate={moment().format("YYYY-MM-DD").toString()}
         onDayPress={handleDayPress}
         markedDates={selectedDate}

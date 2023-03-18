@@ -1,16 +1,9 @@
 import { useState, useRef, useMemo, useCallback } from "react";
-import {
-  StyleSheet,
-  View,
-  Button,
-  Text,
-  ScrollView,
-  TextInput
-} from "react-native";
+import { StyleSheet, View, Button, ScrollView } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import BottomSheet from "@gorhom/bottom-sheet";
-import { data } from "../utils";
 import { CalendarPicker } from "../components";
+import { data } from "../utils";
 
 export const CalendarScreen = () => {
   const scrollViewRef: any = useRef<null | ScrollView>(null);
@@ -56,29 +49,6 @@ export const CalendarScreen = () => {
       />
       <Button title="One Bottom Calendar" onPress={() => handleSnapPress(0)} />
       <Button title="Close" onPress={() => handleClosePress()} />
-      {/* <CalendarPicker /> */}
-      <View>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-        <Text>This is the text</Text>
-      </View>
       <BottomSheet
         index={-1}
         ref={sheetRef}
@@ -88,7 +58,7 @@ export const CalendarScreen = () => {
         <CalendarPicker />
       </BottomSheet>
 
-      <ScrollView ref={scrollViewRef}>
+      {/* <ScrollView ref={scrollViewRef}>
         <TextInput placeholder="test" />
         <View style={styles.contain}>
           <Text style={styles.text}>This is the another text</Text>
@@ -97,7 +67,7 @@ export const CalendarScreen = () => {
           <Text style={styles.text}>This is the another text</Text>
         </View>
         <Text style={styles.text}>This is the end test</Text>
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 };

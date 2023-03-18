@@ -115,14 +115,14 @@ const Map = () => {
       }
 
       const location = await Location.getCurrentPositionAsync({});
-      setLocation(location.coords);
+      setLocation(location?.coords);
       setPin({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude
+        latitude: location?.coords?.latitude,
+        longitude: location?.coords?.longitude
       });
     } catch {
       const status = await Location.getProviderStatusAsync();
-      if (!status.locationServicesEnabled) {
+      if (!status?.locationServicesEnabled) {
         setIsModalVisible(true);
       }
     }
@@ -153,13 +153,15 @@ const Map = () => {
     if (!routes) {
       const routeData = async () => {
         const routes = await getRoutes();
-        const routeData = routes.docs.map((doc: any) => ({
+        const routeData = routes?.docs?.map((doc: any) => ({
           // console.log(doc.data().coordinates);
-          ...doc.data(),
-          id: doc.id
+          ...doc?.data(),
+          id: doc?.id
           // return JSON.parse(doc.data().coordinates);
         }));
-        setRoutes(routeData);
+        if (routeData) {
+          setRoutes(routeData);
+        }
       };
       routeData();
     }
@@ -167,7 +169,7 @@ const Map = () => {
   return (
     <SafeAreaView>
       <Text>{text}</Text>
-      <GooglePlacesAutocomplete
+      {/* <GooglePlacesAutocomplete
         placeholder="Search"
         fetchDetails={true}
         GooglePlacesSearchQuery={{
@@ -194,7 +196,7 @@ const Map = () => {
           },
           listView: { backgroundColor: "white" }
         }}
-      />
+      /> */}
       <Modal
         isVisible={isModalVisible}
         onModalHide={_openSetting ? openSetting : undefined}
@@ -225,7 +227,7 @@ const Map = () => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421
         }}
-        provider="google"
+        // provider="google"
       >
         <Marker
           coordinate={pin}
@@ -236,7 +238,7 @@ const Map = () => {
           }}
           onDragEnd={(e: any) => {
             setPin({
-              latitude: e.nativeEvent.coordinate.latitude,
+              latitude: e?.nativeEvent?.coordinate.latitude,
               longitude: e.nativeEvent.coordinate.longitude
             });
           }}
@@ -257,8 +259,8 @@ const Map = () => {
           fillColor="green"
           strokeWidth={4}
         />
-        {routes && routes.length
-          ? routes.map((data: any, index: number) => (
+        {routes && routes?.length
+          ? routes?.map((data: any, index: number) => (
               <Geojson
                 key={index}
                 geojson={{
@@ -269,7 +271,7 @@ const Map = () => {
                       properties: {},
                       geometry: {
                         type: "LineString",
-                        coordinates: JSON.parse(data.coordinates)
+                        coordinates: JSON.parse(data?.coordinates)
                       }
                     }
                   ]
