@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Calendar, DateData } from "react-native-calendars";
-import moment from "moment";
 import * as Haptics from "expo-haptics";
+import moment from "moment";
 import { getDateRange } from "../utils";
 
 export const CalendarPicker = () => {

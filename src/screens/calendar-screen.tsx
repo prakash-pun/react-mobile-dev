@@ -1,12 +1,23 @@
 import { useState, useRef, useMemo, useCallback } from "react";
-import { StyleSheet, View, TextInput, Button } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Button,
+  Text,
+  ScrollView,
+  TextInput
+} from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
-import * as Haptics from "expo-haptics";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { data } from "../utils";
 import { CalendarPicker } from "../components";
 
 export const CalendarScreen = () => {
+  const scrollViewRef: any = useRef<null | ScrollView>(null);
+  const onButtonClick = () => {
+    scrollViewRef.current?.scrollToEnd({ x: 0, y: 0 });
+  };
+
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ["20", "60%"], []);
   const [open, setOpen] = useState(false);
@@ -25,6 +36,9 @@ export const CalendarScreen = () => {
 
   return (
     <View style={styles.container}>
+      {/* <TextInput ref={inputEl} placeholder="Please Test Work" /> */}
+      <Button title="Test Button" onPress={onButtonClick} />
+
       <DropDownPicker
         open={open}
         value={value}
@@ -42,7 +56,29 @@ export const CalendarScreen = () => {
       />
       <Button title="One Bottom Calendar" onPress={() => handleSnapPress(0)} />
       <Button title="Close" onPress={() => handleClosePress()} />
-      <CalendarPicker />
+      {/* <CalendarPicker /> */}
+      <View>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+        <Text>This is the text</Text>
+      </View>
       <BottomSheet
         index={-1}
         ref={sheetRef}
@@ -51,6 +87,17 @@ export const CalendarScreen = () => {
       >
         <CalendarPicker />
       </BottomSheet>
+
+      <ScrollView ref={scrollViewRef}>
+        <TextInput placeholder="test" />
+        <View style={styles.contain}>
+          <Text style={styles.text}>This is the another text</Text>
+          <Text style={styles.text}>This is the another text</Text>
+          <Text style={styles.text}>This is the another text</Text>
+          <Text style={styles.text}>This is the another text</Text>
+        </View>
+        <Text style={styles.text}>This is the end test</Text>
+      </ScrollView>
     </View>
   );
 };
@@ -65,5 +112,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 30,
     justifyContent: "space-between"
+  },
+  contain: {
+    height: 500,
+    backgroundColor: "azure"
+  },
+  text: {
+    color: "brown",
+    fontSize: 20
   }
 });

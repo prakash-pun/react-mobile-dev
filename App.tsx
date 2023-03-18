@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Image, TouchableOpacity, StatusBar } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import {
   createNativeStackNavigator,
   NativeStackScreenProps
@@ -22,7 +23,6 @@ import { ProfileScreen } from "./src/screens/profile";
 import { Login } from "./src/screens/login-screen";
 import { AuthContext, AuthProvider } from "./src/context/auth";
 import NavigatorExample from "./src/screens/test";
-import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { CustomScreen } from "./src/screens/customScreen";
 
 const Stack = createNativeStackNavigator();
