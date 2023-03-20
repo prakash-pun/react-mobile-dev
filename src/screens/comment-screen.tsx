@@ -1,6 +1,5 @@
 import React from "react";
-import { SafeAreaView, ViewPropTypes, Text } from "react-native";
-import PropTypes from "prop-types";
+import { SafeAreaView, Text } from "react-native";
 import { CommentInput, CommentList } from "../components";
 import { NavigationBar } from "../navigations";
 
@@ -29,14 +28,3 @@ export function Comments({
     </SafeAreaView>
   );
 }
-
-Comments.propTypes = {
-  style: ViewPropTypes.style,
-  comments: PropTypes.arrayOf(PropTypes.string),
-  onClose: PropTypes.func.isRequired,
-  onSubmitComment: PropTypes.func.isRequired
-};
-
-Comments.defaultProps = {
-  style: null
-};
